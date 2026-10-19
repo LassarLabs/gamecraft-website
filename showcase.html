@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showcase - GameCraft</title>
+<meta name="description" content="Scenes made with GameCraft.">
+<meta property="og:title" content="Showcase - GameCraft">
+<meta property="og:description" content="Scenes made with GameCraft.">
+<meta property="og:image" content="https://lassarlabs.github.io/gamecraft-website/assets/img/neon-city-aerial.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+    <nav class="nav" aria-label="Main"><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="unity.html">Coming from Unity</a><a href="docs.html">Docs</a><a href="roadmap.html">Roadmap</a><a href="changelog.html">News</a><a href="faq.html">FAQ</a></nav>
+    <div class="header-actions">
+      <a class="gh" href="https://github.com/LassarLabs/gamecraft">GitHub</a>
+      <a class="button primary" href="download.html">Download</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="page-header"><div class="wrap"><h1>Showcase</h1><p>Scenes made with GameCraft. If you have made something, open an issue and we may feature it here.</p></div></section>
+<section class="section"><div class="wrap">
+  <h2>Neon City</h2>
+  <p class="section-intro">A night city with 189 towers, elevated roads, 44 flying cars and 90 pedestrians, built from primitive shapes, four Shader Graph materials and three C# scripts. The scene was assembled in the editor by a script using live build sessions, one undoable step per object.</p>
+  <div class="gallery">
+    <figure class="figure wide"><img src="assets/img/neon-city-aerial.jpg" alt="Aerial view of Neon City" loading="lazy"><figcaption>Aerial view of the skyline and plaza.</figcaption></figure>
+    <figure class="figure"><img src="assets/img/neon-city-1200.jpg" alt="Neon City at street level" loading="lazy"><figcaption>Street level, with procedural building windows and holographic billboards.</figcaption></figure>
+    <figure class="figure"><img src="assets/img/neon-city-120.jpg" alt="The plaza in Neon City" loading="lazy"><figcaption>The plaza. The wet ground reflects the city through a reflection probe.</figcaption></figure>
+  </div>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <h2>How it was made</h2>
+  <div class="cols-2" style="margin-top:32px">
+    <div class="prose">
+      <h3>Materials</h3>
+      <p>The building windows come from a single Shader Graph that divides each wall into floors and bays using its world position, then lights a random selection of them. The billboards use an animated graph with moving noise and scan lines. The plaza floor varies its smoothness to form puddles.</p>
+      <h3>Scripts</h3>
+      <p>Three C# scripts written against the UnityEngine API move the cars along their lanes, let pedestrians wander the plaza, and drift the camera slowly through the scene.</p>
+    </div>
+    <div>
+      <h3>Build it yourself</h3>
+      <p>The generator script is in the repository. Point the editor at its output folder and the scene builds in front of you.</p>
+<pre><code>python3 tools/demo/neon_city.py ~/NeonCity
+GAMECRAFT_LIVE_DIR=~/NeonCity gamecraft</code></pre>
+      <p style="margin-top:16px"><a href="https://github.com/LassarLabs/gamecraft/blob/main/tools/demo/neon_city.py">View neon_city.py</a></p>
+    </div>
+  </div>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+        <p>A free and open-source game engine, developed by LassarLabs.</p>
+      </div>
+      <div><h4>Engine</h4><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="download.html">Download</a><a href="roadmap.html">Roadmap</a></div>
+      <div><h4>Learn</h4><a href="docs.html">Documentation</a><a href="unity.html">Coming from Unity</a><a href="faq.html">FAQ</a><a href="changelog.html">News</a></div>
+      <div><h4>Project</h4><a href="about.html">About</a><a href="https://github.com/LassarLabs/gamecraft">Source code</a><a href="https://github.com/LassarLabs/gamecraft/issues">Issue tracker</a><a href="https://github.com/LassarLabs/gamecraft/blob/main/LICENSE">MIT License</a></div>
+    </div>
+    <div class="legal">
+      <p>© 2026 LassarLabs. GameCraft is released under the MIT License.</p>
+      <p>GameCraft is not affiliated with or endorsed by Unity Technologies. Unity is a trademark of Unity Technologies.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

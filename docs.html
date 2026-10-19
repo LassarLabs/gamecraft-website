@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation - GameCraft</title>
+<meta name="description" content="Install GameCraft, build it from source and make your first game.">
+<meta property="og:title" content="Documentation - GameCraft">
+<meta property="og:description" content="Install GameCraft, build it from source and make your first game.">
+<meta property="og:image" content="https://lassarlabs.github.io/gamecraft-website/assets/img/neon-city-aerial.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+    <nav class="nav" aria-label="Main"><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="unity.html">Coming from Unity</a><a href="docs.html">Docs</a><a href="roadmap.html">Roadmap</a><a href="changelog.html">News</a><a href="faq.html">FAQ</a></nav>
+    <div class="header-actions">
+      <a class="gh" href="https://github.com/LassarLabs/gamecraft">GitHub</a>
+      <a class="button primary" href="download.html">Download</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="page-header"><div class="wrap"><h1>Documentation</h1><p>Getting started with GameCraft. The full manuals live in the repository.</p></div></section>
+<section class="section"><div class="wrap">
+  <div class="cols-2">
+    <div class="prose">
+      <h2>Your first project</h2>
+      <ol>
+        <li>Open GameCraft and choose <b>New Project</b>. Pick the 3D Core template.</li>
+        <li>Choose <b>GameObject &gt; 3D Object &gt; Cube</b> and add a Rigidbody in the Inspector.</li>
+        <li>Choose <b>Assets &gt; Create &gt; MonoBehaviour Script</b> and open it in the script editor.</li>
+        <li>Press <b>Play</b> to run the scene.</li>
+        <li>Choose <b>File &gt; Build Settings</b> and click <b>Build</b> to export a standalone game.</li>
+      </ol>
+    </div>
+    <div class="prose">
+      <h2>Building from source</h2>
+      <p>You need Node 22.19 or later, the stable Rust toolchain and the .NET 10 SDK. On macOS you also need the Xcode command-line tools.</p>
+<pre><code>git clone https://github.com/LassarLabs/gamecraft.git
+cd gamecraft
+npm install
+source tools/env.sh
+npm run dotnet:build
+npm run tauri:dev</code></pre>
+    </div>
+  </div>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <div class="cols-2">
+    <div class="prose">
+      <h2>Command line</h2>
+<pre><code>gamecraft-cli build &lt;project&gt; --target web
+gamecraft-cli unity-import &lt;unity-project&gt; &lt;output&gt;
+gamecraft-cli bake-lighting &lt;project&gt;
+gamecraft-cli package search &lt;query&gt;</code></pre>
+    </div>
+    <div class="prose">
+      <h2>Running the tests</h2>
+<pre><code>tools/quality-gates.sh     # everything
+cargo test --workspace      # engine
+npx vitest run              # editor
+tools/linux-test.sh         # Linux, in Docker</code></pre>
+    </div>
+  </div>
+</div></section>
+<section class="section"><div class="wrap">
+  <h2>Manuals</h2>
+  <div class="table-wrap" style="margin-top:24px"><table class="data">
+    <tr><th>Document</th><th>Contents</th></tr>
+    <tr><td><a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/USER_GUIDE.md">User guide</a></td><td>The editor, its panels and workflows</td></tr>
+    <tr><td><a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/SCRIPTING.md">Scripting reference</a></td><td>The GameCraft SDK and the UnityEngine-compatible API</td></tr>
+    <tr><td><a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/ARCHITECTURE.md">Architecture</a></td><td>How the engine, editor and runtime fit together</td></tr>
+    <tr><td><a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/UNITY_PARITY.md">Unity parity</a></td><td>Unity features and their status</td></tr>
+    <tr><td><a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/LIMITATIONS.md">Limitations</a></td><td>Features that are partial or missing</td></tr>
+    <tr><td><a href="https://github.com/LassarLabs/gamecraft/blob/main/CHANGELOG.md">Changelog</a></td><td>Changes in each release</td></tr>
+  </table></div>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+        <p>A free and open-source game engine, developed by LassarLabs.</p>
+      </div>
+      <div><h4>Engine</h4><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="download.html">Download</a><a href="roadmap.html">Roadmap</a></div>
+      <div><h4>Learn</h4><a href="docs.html">Documentation</a><a href="unity.html">Coming from Unity</a><a href="faq.html">FAQ</a><a href="changelog.html">News</a></div>
+      <div><h4>Project</h4><a href="about.html">About</a><a href="https://github.com/LassarLabs/gamecraft">Source code</a><a href="https://github.com/LassarLabs/gamecraft/issues">Issue tracker</a><a href="https://github.com/LassarLabs/gamecraft/blob/main/LICENSE">MIT License</a></div>
+    </div>
+    <div class="legal">
+      <p>© 2026 LassarLabs. GameCraft is released under the MIT License.</p>
+      <p>GameCraft is not affiliated with or endorsed by Unity Technologies. Unity is a trademark of Unity Technologies.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

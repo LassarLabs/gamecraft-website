@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coming from Unity - GameCraft</title>
+<meta name="description" content="How to move a Unity project to GameCraft and what is supported.">
+<meta property="og:title" content="Coming from Unity - GameCraft">
+<meta property="og:description" content="How to move a Unity project to GameCraft and what is supported.">
+<meta property="og:image" content="https://lassarlabs.github.io/gamecraft-website/assets/img/neon-city-aerial.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+    <nav class="nav" aria-label="Main"><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="unity.html">Coming from Unity</a><a href="docs.html">Docs</a><a href="roadmap.html">Roadmap</a><a href="changelog.html">News</a><a href="faq.html">FAQ</a></nav>
+    <div class="header-actions">
+      <a class="gh" href="https://github.com/LassarLabs/gamecraft">GitHub</a>
+      <a class="button primary" href="download.html">Download</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="page-header"><div class="wrap"><h1>Coming from Unity</h1><p>GameCraft reads Unity's file formats and implements a large part of its scripting API. This page explains what carries over and how to migrate a project.</p></div></section>
+<section class="section"><div class="wrap prose">
+  <h2>Importing a project</h2>
+  <ol>
+    <li>In Unity, export your assets as a <code>.unitypackage</code>, or keep the project folder.</li>
+    <li>In GameCraft, choose <b>Assets &gt; Import Unity Project</b> or <b>Import Unity Package</b>. You can also use <code>gamecraft-cli unity-import</code>.</li>
+    <li>Check the import report in the Console. It lists what was converted, what was skipped and why.</li>
+    <li>Press Play. Scripts compile against the compatibility layer and run in the engine.</li>
+  </ol>
+
+  <h2>What is imported</h2>
+  <ul>
+    <li>Scenes and prefabs, including nested prefabs, overrides and removed components</li>
+    <li>Materials (Standard and URP), animation clips and animator controllers</li>
+    <li>ScriptableObject assets, render textures, UI canvases and particle systems</li>
+    <li>Audio mixers and Localization package tables</li>
+    <li>Asset references, resolved through the GUIDs in <code>.meta</code> files</li>
+  </ul>
+
+  <h2>Scripting API</h2>
+  <p>Scripts using the supported parts of <code>UnityEngine</code> compile without changes. This includes MonoBehaviour messages, <code>GetComponent</code>, transforms, coroutines, serialized fields, ScriptableObject, UnityEvent, physics, input and touch, cameras, materials, UI, scene management, Netcode for GameObjects, Addressables and Localization. A script that uses something unsupported fails to compile with an error naming the missing member.</p>
+  <pre><code><span class="kw">using</span> UnityEngine;
+
+<span class="kw">public class</span> <span class="ty">Spinner</span> : <span class="ty">MonoBehaviour</span>
+{
+    [<span class="ty">SerializeField</span>] <span class="kw">float</span> speed = <span class="nu">90f</span>;
+
+    <span class="kw">void</span> Update()
+    {
+        transform.Rotate(<span class="nu">0f</span>, speed * <span class="ty">Time</span>.deltaTime, <span class="nu">0f</span>);
+    }
+
+    <span class="kw">void</span> OnTriggerEnter(<span class="ty">Collider</span> other)
+    {
+        <span class="ty">Debug</span>.Log(<span class="st">"Collected by "</span> + other.name);
+        Destroy(gameObject);
+    }
+}</code></pre>
+
+  <h2>Editor extensions</h2>
+  <p>Scripts in <code>Editor</code> folders run inside the GameCraft editor. Custom inspectors, <code>EditorGUILayout</code>, editor windows, menu items and property drawers are supported. UI Toolkit editors, <code>Handles</code> and scene-view drawing are not.</p>
+
+  <h2>Not supported</h2>
+  <ul>
+    <li>Precompiled <code>.dll</code> plugins and native libraries. Packages must ship C# source.</li>
+    <li>The Unity Asset Store and Unity online services. Assets exported as a <code>.unitypackage</code> can be imported.</li>
+    <li>iOS and console platforms.</li>
+  </ul>
+  <p>The complete checklist, with the test that covers each item, is in <a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/UNITY_PARITY.md">UNITY_PARITY.md</a>: 66 of 73 items are done, and the remaining 7 depend on outside accounts, hardware or proprietary services.</p>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+        <p>A free and open-source game engine, developed by LassarLabs.</p>
+      </div>
+      <div><h4>Engine</h4><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="download.html">Download</a><a href="roadmap.html">Roadmap</a></div>
+      <div><h4>Learn</h4><a href="docs.html">Documentation</a><a href="unity.html">Coming from Unity</a><a href="faq.html">FAQ</a><a href="changelog.html">News</a></div>
+      <div><h4>Project</h4><a href="about.html">About</a><a href="https://github.com/LassarLabs/gamecraft">Source code</a><a href="https://github.com/LassarLabs/gamecraft/issues">Issue tracker</a><a href="https://github.com/LassarLabs/gamecraft/blob/main/LICENSE">MIT License</a></div>
+    </div>
+    <div class="legal">
+      <p>© 2026 LassarLabs. GameCraft is released under the MIT License.</p>
+      <p>GameCraft is not affiliated with or endorsed by Unity Technologies. Unity is a trademark of Unity Technologies.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

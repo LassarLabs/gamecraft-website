@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameCraft - free and open-source game engine</title>
+<meta name="description" content="GameCraft is a free and open-source 2D and 3D game engine with a full editor, C# scripting and export to desktop, web, Android and XR.">
+<meta property="og:title" content="GameCraft - free and open-source game engine">
+<meta property="og:description" content="GameCraft is a free and open-source 2D and 3D game engine with a full editor, C# scripting and export to desktop, web, Android and XR.">
+<meta property="og:image" content="https://lassarlabs.github.io/gamecraft-website/assets/img/neon-city-aerial.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+    <nav class="nav" aria-label="Main"><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="unity.html">Coming from Unity</a><a href="docs.html">Docs</a><a href="roadmap.html">Roadmap</a><a href="changelog.html">News</a><a href="faq.html">FAQ</a></nav>
+    <div class="header-actions">
+      <a class="gh" href="https://github.com/LassarLabs/gamecraft">GitHub</a>
+      <a class="button primary" href="download.html">Download</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="hero"><div class="wrap">
+  <div class="hero-text">
+    <h1>A free and open-source game engine</h1>
+    <p>Make 2D and 3D games in a full-featured editor, write gameplay in C#, and export to desktop, web, Android and XR. GameCraft runs entirely on your own computer. There is no account to create and nothing to pay.</p>
+    <div class="buttons">
+      <a class="button primary" href="download.html">Download GameCraft</a>
+      <a class="button secondary" href="features.html">Explore features</a>
+    </div>
+    <p class="small">macOS on Apple Silicon. Windows and Linux can be built from source.</p>
+  </div>
+  <figure class="hero-image">
+    <img src="assets/img/neon-city-aerial.jpg" alt="A night city with lit skyscrapers, elevated roads and a central plaza, rendered in GameCraft" width="1920" height="1080">
+    <figcaption>Neon City, a demo scene built in the GameCraft editor and rendered in real time.</figcaption>
+  </figure>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="section-intro">
+    <h2>Everything in one editor</h2>
+    <p>GameCraft combines a native engine written in Rust, the .NET runtime for scripting, and a desktop editor. The parts are developed together and tested together.</p>
+  </div>
+  <div class="cols-3"><div class="item"><h3>Rendering</h3><p>Physically based rendering on Metal, Vulkan, DirectX 12 and WebGPU, with post-processing, reflection probes, baked lighting and a node-based shader editor.</p></div><div class="item"><h3>C# scripting</h3><p>Scripts compile when you save and run on .NET 10. Hot reload keeps the values in your fields, and you can attach a debugger.</p></div><div class="item"><h3>Physics</h3><p>3D and 2D rigid bodies, joints, a character controller, raycasts and a collision matrix with 32 layers.</p></div><div class="item"><h3>Animation</h3><p>Animator state machines, skeletal animation from glTF and FBX, blend shapes, inverse kinematics and a Timeline editor.</p></div><div class="item"><h3>Effects</h3><p>Particle systems with collisions, a GPU particle graph with up to a million particles, and trail renderers.</p></div><div class="item"><h3>Multiplayer</h3><p>Networked objects, synchronised variables and remote procedure calls over UDP, with host, server and client modes.</p></div></div>
+  <p style="margin-top:40px"><a href="features.html">See the full feature list</a></p>
+</div></section>
+
+<section class="section alt"><div class="wrap">
+  <div class="row">
+    <figure class="figure">
+      <img src="assets/img/editor.jpg" alt="The GameCraft editor with the Hierarchy, Scene view and engine view open" width="1776" height="853" loading="lazy">
+      <figcaption>The editor in Play mode. The panel on the right is rendered by the engine itself.</figcaption>
+    </figure>
+    <div>
+      <h2>A familiar editor</h2>
+      <p>Hierarchy, Inspector, Scene and Game views, a Project browser and a Console, arranged in panels you can dock anywhere. If you have used a modern game editor before, you already know where things are.</p>
+      <p>Add components, edit values while the game runs, build prefabs, and press Play to run the scene in the real engine rather than a preview.</p>
+    </div>
+  </div>
+  <div class="row flip">
+    <div><pre><code><span class="kw">using</span> UnityEngine;
+
+<span class="kw">public class</span> <span class="ty">Spinner</span> : <span class="ty">MonoBehaviour</span>
+{
+    [<span class="ty">SerializeField</span>] <span class="kw">float</span> speed = <span class="nu">90f</span>;
+
+    <span class="kw">void</span> Update()
+    {
+        transform.Rotate(<span class="nu">0f</span>, speed * <span class="ty">Time</span>.deltaTime, <span class="nu">0f</span>);
+    }
+
+    <span class="kw">void</span> OnTriggerEnter(<span class="ty">Collider</span> other)
+    {
+        <span class="ty">Debug</span>.Log(<span class="st">"Collected by "</span> + other.name);
+        Destroy(gameObject);
+    }
+}</code></pre></div>
+    <div>
+      <h2>Bring your Unity projects</h2>
+      <p>GameCraft can import Unity scenes, prefabs, materials, animations and <code>.unitypackage</code> files, and it runs scripts written against the common parts of the <code>UnityEngine</code> API without changes.</p>
+      <p>An import report lists everything that was converted and everything that was skipped.</p>
+      <p><a href="unity.html">Read the migration guide</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="cols-2">
+    <div>
+      <h2>Export to every platform you can test</h2>
+      <p>One project builds for several targets from the editor or the command line. Exported games are self-contained and do not need GameCraft to be installed.</p>
+      <p><a href="features.html#platforms">Platform details</a></p>
+    </div>
+    <table class="facts">
+      <tr><th>Desktop</th><td>macOS, Windows, Linux</td></tr>
+      <tr><th>Web</th><td>WebAssembly with WebGPU</td></tr>
+      <tr><th>Mobile</th><td>Android (arm64)</td></tr>
+      <tr><th>XR</th><td>OpenXR headsets</td></tr>
+      <tr><th>License</th><td>MIT, with no royalties or fees</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<section class="section alt"><div class="wrap">
+  <div class="section-intro"><h2>News</h2></div>
+  <ul class="news">
+    <li><time>October 2026</time><div><h3>Live build sessions</h3><p>The editor can now be driven by a command file, so whole scenes can be built from a script while you watch. The Neon City demo was made this way.</p></div></li>
+    <li><time>October 2026</time><div><h3>GameCraft 0.3</h3><p>Unity project import, the UnityEngine and UnityEditor compatibility layers, post-processing, Shader Graph, Timeline, and new Windows, Linux, Web, Android and XR targets.</p></div></li>
+  </ul>
+  <p style="margin-top:24px"><a href="changelog.html">All news</a></p>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="cols-3">
+    <div class="item"><h3>Get the source</h3><p>GameCraft is developed in the open on GitHub. <a href="https://github.com/LassarLabs/gamecraft">Browse the repository</a>.</p></div>
+    <div class="item"><h3>Report a problem</h3><p>Found a bug or missing feature? <a href="https://github.com/LassarLabs/gamecraft/issues">Open an issue</a>.</p></div>
+    <div class="item"><h3>Contribute</h3><p>Changes are welcome. Every change needs a test. <a href="about.html">How to contribute</a>.</p></div>
+  </div>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+        <p>A free and open-source game engine, developed by LassarLabs.</p>
+      </div>
+      <div><h4>Engine</h4><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="download.html">Download</a><a href="roadmap.html">Roadmap</a></div>
+      <div><h4>Learn</h4><a href="docs.html">Documentation</a><a href="unity.html">Coming from Unity</a><a href="faq.html">FAQ</a><a href="changelog.html">News</a></div>
+      <div><h4>Project</h4><a href="about.html">About</a><a href="https://github.com/LassarLabs/gamecraft">Source code</a><a href="https://github.com/LassarLabs/gamecraft/issues">Issue tracker</a><a href="https://github.com/LassarLabs/gamecraft/blob/main/LICENSE">MIT License</a></div>
+    </div>
+    <div class="legal">
+      <p>© 2026 LassarLabs. GameCraft is released under the MIT License.</p>
+      <p>GameCraft is not affiliated with or endorsed by Unity Technologies. Unity is a trademark of Unity Technologies.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

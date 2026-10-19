@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Features - GameCraft</title>
+<meta name="description" content="A complete list of GameCraft features.">
+<meta property="og:title" content="Features - GameCraft">
+<meta property="og:description" content="A complete list of GameCraft features.">
+<meta property="og:image" content="https://lassarlabs.github.io/gamecraft-website/assets/img/neon-city-aerial.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+    <nav class="nav" aria-label="Main"><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="unity.html">Coming from Unity</a><a href="docs.html">Docs</a><a href="roadmap.html">Roadmap</a><a href="changelog.html">News</a><a href="faq.html">FAQ</a></nav>
+    <div class="header-actions">
+      <a class="gh" href="https://github.com/LassarLabs/gamecraft">GitHub</a>
+      <a class="button primary" href="download.html">Download</a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="page-header"><div class="wrap"><h1>Features</h1><p>An overview of what GameCraft can do today. Known gaps are listed in the <a href="https://github.com/LassarLabs/gamecraft/blob/main/docs/LIMITATIONS.md">limitations document</a>.</p></div></section>
+<section class="section"><div class="wrap">
+  <h2>Rendering</h2>
+  <p class="section-intro">A forward renderer built on wgpu, running on Metal, Vulkan, DirectX 12 and WebGPU.</p>
+  <div class="cols-3"><div class="item"><h3>Post-processing</h3><p>Bloom, tone mapping (including ACES), colour adjustments, white balance, lift/gamma/gain, vignette, chromatic aberration, film grain, ambient occlusion, depth of field and motion blur, controlled by volumes.</p></div><div class="item"><h3>Lighting</h3><p>Directional, point and spot lights with shadows. Realtime and baked reflection probes, light probes, and lightmaps from a path tracer.</p></div><div class="item"><h3>Shader Graph</h3><p>A node editor with around 50 nodes. Graphs compile to WGSL, and each material can override graph properties.</p></div><div class="item"><h3>Cameras</h3><p>Multiple cameras with depth order, viewport rectangles, culling masks, overlay cameras and render textures.</p></div><div class="item"><h3>Performance</h3><p>LOD groups, occlusion culling, compressed textures and GPU skinning.</p></div><div class="item"><h3>Particles</h3><p>CPU particle systems with world and plane collisions, a GPU particle graph, and trail renderers.</p></div></div>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <h2>Scripting</h2>
+  <p class="section-intro">Gameplay is written in C#. The .NET 10 runtime is hosted inside the engine and the Roslyn compiler runs when you save.</p>
+  <div class="cols-3"><div class="item"><h3>Two APIs</h3><p>Use the GameCraft SDK, or write against the UnityEngine-compatible API with MonoBehaviour, coroutines and serialized fields.</p></div><div class="item"><h3>Hot reload</h3><p>Change a script while the game is running. Serialized field values are kept.</p></div><div class="item"><h3>Debugging</h3><p>Attach a .NET debugger to Play mode with full symbol information.</p></div><div class="item"><h3>Jobs and ECS</h3><p>A job system with native containers and safety checks, Burst-compatible attributes, Unity.Mathematics and a minimal entity component system.</p></div><div class="item"><h3>Editor scripts</h3><p>Scripts in Editor folders can add custom inspectors, editor windows, menu items and property drawers.</p></div><div class="item"><h3>Packages</h3><p>Share code as packages from a local folder or a package registry, with dependency resolution and integrity checks.</p></div></div>
+</div></section>
+<section class="section"><div class="wrap">
+  <h2>Tools</h2>
+  <p class="section-intro">Built into the editor, with no extra installation.</p>
+  <div class="cols-3"><div class="item"><h3>Timeline</h3><p>Sequence animation, activation, audio, signals and camera shots.</p></div><div class="item"><h3>Virtual cameras</h3><p>Priorities, follow and look-at targets, damping, dolly tracks, noise and blending.</p></div><div class="item"><h3>Mesh editing</h3><p>Edit vertices, edges and faces; extrude, inset and subdivide; edit UVs.</p></div><div class="item"><h3>Animation rigging</h3><p>Two-bone IK, aim and parent constraints on top of animated characters.</p></div><div class="item"><h3>Terrain</h3><p>Sculpt and paint terrain, place vegetation and stream regions.</p></div><div class="item"><h3>Navigation</h3><p>Bake navigation meshes and move agents around obstacles.</p></div><div class="item"><h3>Audio</h3><p>Spatial audio and a mixer with groups, effects, sends and snapshots.</p></div><div class="item"><h3>User interface</h3><p>Canvas-based UI with text, buttons, inputs, toggles, sliders, dropdowns and scroll views.</p></div><div class="item"><h3>Localization</h3><p>String and asset tables, plural rules per language, and CSV import and export.</p></div></div>
+</div></section>
+<section class="section alt" id="platforms"><div class="wrap">
+  <h2>Platforms</h2>
+  <p class="section-intro">How each export target is tested.</p>
+  <div class="table-wrap"><table class="data">
+    <tr><th>Platform</th><th>Status</th><th>Testing</th></tr>
+    <tr><td>macOS (Apple Silicon)</td><td class="yes">Supported</td><td>Editor and exported games, including an automated test that creates a game from scratch in the installed app.</td></tr>
+    <tr><td>Windows x64</td><td class="yes">Supported</td><td>Cross-compiled player, checked under Wine.</td></tr>
+    <tr><td>Linux arm64 and x64</td><td class="yes">Supported</td><td>Full test suite in Docker; exported games in clean containers.</td></tr>
+    <tr><td>Web</td><td class="yes">Supported</td><td>WebAssembly and WebGPU, with C# on the .NET WebAssembly runtime.</td></tr>
+    <tr><td>Android arm64</td><td class="yes">Supported</td><td>Signed APK on the Android emulator with scripted input.</td></tr>
+    <tr><td>OpenXR</td><td class="yes">Supported</td><td>Stereo rendering against the Monado runtime.</td></tr>
+    <tr><td>iOS</td><td class="planned">Not yet</td><td>Requires Xcode with the iOS SDK and an Apple Developer account.</td></tr>
+    <tr><td>Consoles</td><td class="planned">Not yet</td><td>Console SDKs are only available to licensed developers.</td></tr>
+  </table></div>
+</div></section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <a class="wordmark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#16181d"/><path d="M16 7 25 16 16 25 7 16Z" fill="#fff"/><path d="M16 12 20 16 16 20 12 16Z" fill="#2547c9"/></svg> GameCraft</a>
+        <p>A free and open-source game engine, developed by LassarLabs.</p>
+      </div>
+      <div><h4>Engine</h4><a href="features.html">Features</a><a href="showcase.html">Showcase</a><a href="download.html">Download</a><a href="roadmap.html">Roadmap</a></div>
+      <div><h4>Learn</h4><a href="docs.html">Documentation</a><a href="unity.html">Coming from Unity</a><a href="faq.html">FAQ</a><a href="changelog.html">News</a></div>
+      <div><h4>Project</h4><a href="about.html">About</a><a href="https://github.com/LassarLabs/gamecraft">Source code</a><a href="https://github.com/LassarLabs/gamecraft/issues">Issue tracker</a><a href="https://github.com/LassarLabs/gamecraft/blob/main/LICENSE">MIT License</a></div>
+    </div>
+    <div class="legal">
+      <p>© 2026 LassarLabs. GameCraft is released under the MIT License.</p>
+      <p>GameCraft is not affiliated with or endorsed by Unity Technologies. Unity is a trademark of Unity Technologies.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
